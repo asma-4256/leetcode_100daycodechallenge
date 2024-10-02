@@ -1,0 +1,22 @@
+Find pivot index 
+Time complexity:O(n) // as the two loops iterante sequentially one after one
+Space complexity:O(1)// as it only creates space for the constants like LeftSum,totalSum etc...
+
+code:(c++)
+class Solution {
+public:
+    int pivotIndex(vector<int>& nums) {
+        int Leftsum=0,totalSum=0;
+        for(int& el:nums){
+            totalSum+=el;  
+        }
+        for(int i=0;i<nums.size();i++){
+            if(Leftsum==totalSum-Leftsum-nums[i]){
+                return i;
+            }
+             Leftsum+=nums[i];
+        }
+        
+        return -1;     
+    }
+};
