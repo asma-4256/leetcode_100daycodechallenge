@@ -1,0 +1,23 @@
+1991.Find middle index:
+Time complexity: O(n)
+
+code:(c++)
+class Solution {
+public:
+    int pivotIndex(vector<int>& nums) {
+        int Leftsum=0,totalSum=0;
+        for(int& el:nums){
+            totalSum+=el;  
+        }
+        for(int i=0;i<nums.size();i++){
+            if(Leftsum==totalSum-Leftsum-nums[i]){
+                return i;
+            }
+             Leftsum+=nums[i];
+        }
+        
+        return -1;     
+    }
+};
+
+Here as like pivot index it is also same ... we have to find the middle element which has the sum of left elements are equal <br>to sum of right elements
