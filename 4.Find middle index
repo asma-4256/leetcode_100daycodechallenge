@@ -20,4 +20,5 @@ public:
     }
 };
 
-Here as like pivot index it is also same ... we have to find the middle element which has the sum of left elements are equal <br>to sum of right elements
+Here as like pivot index it is also same ... we have to find the middle element which has the sum of left elements are equal 
+to sum of right elements
