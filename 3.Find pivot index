@@ -1,4 +1,4 @@
-Find pivot index 
+724.Find pivot index 
 Time complexity:O(n) // as the two loops iterante sequentially one after one
 Space complexity:O(1)// as it only creates space for the constants like LeftSum,totalSum etc...
 
