@@ -1,0 +1,24 @@
+747.Largest Number At Least Twice of Others
+
+code:-(c++)
+class Solution {
+public:
+    int dominantIndex(vector<int>& nums) {
+        int maxi=nums[0],maxindex=0;
+        
+        for(int i=0;i<nums.size();i++){
+            if(maxi<nums[i]){
+                maxi=nums[i];
+                maxindex=i;
+            }
+            
+        }
+        for(int i=0;i<nums.size();i++){
+            if(i!=maxindex && maxi<2*nums[i]){
+                return -1;
+            }
+           
+        }
+        return maxindex;
+    }
+};
