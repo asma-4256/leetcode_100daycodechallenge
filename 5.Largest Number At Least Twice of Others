@@ -1,4 +1,5 @@
 747.Largest Number At Least Twice of Others
+Time complexity :O(n)
 
 code:-(c++)
 class Solution {
