@@ -1,0 +1,37 @@
+50.pow(x,n)
+
+time complexity :O(n)
+
+code(c++) :
+class Solution {
+public:
+    double myPow(double x, int n) {
+        
+        long bf=n;
+        double ans=1;
+        if(n<0){
+            x=1/x;
+            bf = -bf;
+        }
+        if(x==1 || n==0){
+            return 1.0;
+        }
+        if(x==0)return 0.0;  //corner cases
+        if(x==-1 && n%2!=0)return -1.0; //corner case
+        if(x==-1 && n%2==0)return 1.0;  //corner case
+        while(bf>0){
+            if(bf%2==1){
+                ans=ans*x;
+            }
+            x=x*x;
+            bf=bf/2;
+        }
+        return ans;
+        
+        
+    }
+};
+If the value is negative then we will convert it into positive type by doing x=1/x && bf=-bf 
+After it became positive for the value greater than 0 we will take the binary form of n and iterate upto that binary values
+for that we take remainder for last element ==1 then answer multiplied by it & x becomes x=x*x and iterate same process for before elements where they ==1
+Lastly return ans
