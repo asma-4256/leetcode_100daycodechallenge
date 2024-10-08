@@ -1,0 +1,28 @@
+1963.Minimun Number of Swaps to make the string balanced
+
+Time complexity:O(n)
+Space complexity:O(1)
+
+code(c++)
+class Solution {
+public:
+    int minSwaps(string s) {
+    int balance=0,imbalance=0;
+    for(int i=0;s[i]!=0;i++){
+       if(s[i]=='['){
+          balance--;
+        }else{
+           balance++;
+           imbalance=max(balance,imbalance);
+        }
+    }
+    return (imbalance+1)/2;
+
+    }
+};
+The main theme is the number of openings equal to the number of closing which means a string is balanced.
+If the closed brackets are maximum we have to count it as imbalance & swap with open brackets at end of string.
+ pseudocode:
+  if s[i]=='[' balance--;
+  if s[i]==']' balance ++;
+  return largest close brackets with divided by 2 by adding 1.....
