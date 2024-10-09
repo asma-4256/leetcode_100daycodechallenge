@@ -1,0 +1,26 @@
+921.Minimum add to make parenthesis
+
+code(c++)
+class Solution {
+public:
+    int minAddToMakeValid(string s) {
+    int balanced=0,imbalanced=0;
+    for(int i=0;s[i]!=0;i++){
+        if(s[i]=='('){
+            balanced++;
+        }else {
+        if(balanced>0){
+           balanced--;
+        }else{
+        imbalanced++;
+        }
+        }
+    }
+    return balanced+imbalanced;
+}
+       
+};
+
+if left parenthesis => balance++;
+if right paranthesis => balance has value then it -- ;& else imbalance++
+return balance+imbalance to return the minimum value to add to make parenthesis.....
