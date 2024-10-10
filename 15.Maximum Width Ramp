@@ -1,0 +1,27 @@
+962.Maximum Width Ramp
+
+Time complexity : O(n)
+Space complexity : O(n)
+
+code: (c++)
+class Solution {
+public:
+    int maxWidthRamp(vector<int>& nums) {
+        int n=nums.size();
+        stack<int> stc;
+        for(int i=0;i<n;i++){
+            if(stc.empty() || nums[stc.top()]>nums[i]){
+                stc.push(i);
+            }
+        }
+        int maxi=0;
+        for(int i=n-1;i>0;i--){
+            while(!stc.empty()&& nums[stc.top()]<=nums[i]){
+                maxi=max(maxi,i-stc.top());
+                stc.pop();
+            }
+        }
+        return maxi;
+        
+    }
+};
