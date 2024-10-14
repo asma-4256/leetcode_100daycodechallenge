@@ -1,0 +1,41 @@
+2530.Maximal score after applying k operations 
+
+
+Time complexity:- O(n+k log n)
+Code:-
+
+class Solution {
+
+public:
+
+long long maxkelements (vector<int>& nums, int k) {
+
+long long score=1;
+
+priority_queue<int> maxHeap;
+
+for(int val:nums){
+
+maxheap.push(val);
+
+} while(k>0){
+
+int n-maxHeap.top();
+
+maxheap.pop();
+
+score+=n;
+
+k--;
+
+maxheap.push(static_cast<int>(ceil(n/3.0)));
+
+// maxHeap.push((n+2)/3.0);
+
+}
+
+return score;
+
+} };
+
+In c++ max heap is default heap
