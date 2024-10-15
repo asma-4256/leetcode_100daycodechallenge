@@ -1,0 +1,24 @@
+2938.Separate Black & white balls:
+          Approach: Two pointer
+
+Time complexity: O(n)
+Space complexity:O(1)
+
+code(c++)
+class Solution {
+public:
+    long long minimumSteps(string s) {
+        int whiteball=0;
+        long long total_swaps=0;
+        for(int i=0;i<s.size();i++){
+            if(s[i]=='0'){
+                total_swaps+=i-whiteball;
+                whiteball++;
+            }
+        }
+        return total_swaps;
+        
+    }
+};
+If the element is 1 then it wil be swapped with value '0'
+It counts how many times swapped elements to make black balls bundled....
