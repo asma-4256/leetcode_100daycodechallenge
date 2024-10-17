@@ -7,16 +7,16 @@ code(c++)
 class Solution {
 public:
     int minSwaps(string s) {
-    int balance=0,imbalance=0;
+    int balance=0,minswaps=0;
     for(int i=0;s[i]!=0;i++){
        if(s[i]=='['){
           balance--;
         }else{
            balance++;
-           imbalance=max(balance,imbalance);
+           minswaps=max(balance,minswaps);
         }
     }
-    return (imbalance+1)/2;
+    return (minswaps+1)/2;
 
     }
 };
