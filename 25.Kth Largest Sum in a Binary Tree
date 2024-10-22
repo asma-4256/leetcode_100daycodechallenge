@@ -1,0 +1,58 @@
+2583.Kth Largest Sum in a Binary Tree
+
+Time Complexity:  O(log^2 N +k.log N)
+   The level order traversal -O(n)
+   The max heap max elements -O(log n)     
+   Adding sum to max heap    -O(log n)     //these two O(log^2 n)
+   popng k-1 elements in heap-O(k.log n)
+Space complexity:O(n)
+
+code:(c++)
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
+ * };
+ */
+class Solution {
+public:
+    long long kthLargestLevelSum(TreeNode* root, int k) {
+        priority_queue<long>maxheap;
+        queue<TreeNode*>bfsq;
+        bfsq.push(root);
+        while(!bfsq.empty()){
+            long size=bfsq.size();
+            long sum=0;
+            for(int i=0;i<size;i++){
+                TreeNode* poppedNode=bfsq.front();
+                bfsq.pop();
+                sum+=poppedNode->val;
+                if(poppedNode->left!=nullptr){
+                    bfsq.push(poppedNode->left);
+                }
+                if(poppedNode->right!=nullptr){
+                    bfsq.push(poppedNode->right);
+                }
+            }
+            maxheap.push(sum);
+        }
+        if(maxheap.size()<k){
+            return -1;
+        }
+        for(int i=0;i<k-1;i++){
+            maxheap.pop();
+        }
+        return maxheap.top();
+        
+        
+    }
+};
+
+
+By using BFS level traversng we add the elements into max heap by summng it as popped node & at last if the levels are less than the k then return -1;
+else remove the frst k-1 elements from max heap & retun the top of max heap value as the largest sum in binary tree...
