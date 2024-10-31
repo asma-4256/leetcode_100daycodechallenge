@@ -1,0 +1,35 @@
+11.Container with most water
+                  Approach(2 pointer)
+
+Time complexity:O(n)
+Space complexity:O(1)
+
+Code(c++):
+class Solution {
+public:
+    int maxArea(vector<int>& height) {
+        int n=height.size(),leftp=0,rightp=n-1,ans=0;
+        while(leftp<rightp){
+            int width=rightp-leftp;
+            int heightt=min(height[leftp],height[rightp]);
+            int curArea=width*heightt;
+            ans=max(ans,curArea);
+            if(height[leftp]<height[rightp]){
+                leftp++;
+            }else{
+                rightp--;
+            }
+            
+        }
+        return ans;    
+    }
+};
+Input: height = [1,8,6,2,5,4,8,3,7]
+Output: 49
+Explanation: The above vertical lines are represented by array [1,8,6,2,5,4,8,3,7]. In this case, the max area of water (blue section) the container can contain is 49.
+
+Descripton:
+The water can have a width from the right value to the left value & height is the minimum of polls area be multiply of both.
+   For that we used 2 pointer approach in which the one is leftpointer & second rightpointer.... & to get maximum of water ,minmum among these two heights can be changed...
+   After all container findings taking the maximum among them is answer variable.....
+
