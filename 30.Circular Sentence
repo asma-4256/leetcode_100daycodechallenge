@@ -1,0 +1,32 @@
+2490.Circular Sentence
+  Time complexity:O(n)
+  Space complexity:O(1)
+  
+code(c++):
+class Solution {
+public:
+    bool isCircularSentence(string sentence) {
+        int n=sentence.size();
+        for(int i=0;i<n;i++){
+            if(sentence[i]==' '&&sentence[i-1]!=sentence[i+1]){
+                return false;
+            }
+        }
+        return sentence[0]==sentence[n-1];   
+    }
+};
+
+
+Example 1:
+
+Input: sentence = "leetcode exercises sound delightful"
+Output: true
+Explanation: The words in sentence are ["leetcode", "exercises", "sound", "delightful"].
+- leetcode's last character is equal to exercises's first character.
+- exercises's last character is equal to sound's first character.
+- sound's last character is equal to delightful's first character.
+- delightful's last character is equal to leetcode's first character.
+The sentence is circular.
+
+   The sentence is first checked if there is empty space & before,after of space the value sould be same then only it is CIRCULAR SENTENCE.... else it will be return false;
+  & if the middle is ok for the condtions then check for the inital & final letter in sentence are equal return true; (by sentence[0]==sentence[sentence.size-1]).........
