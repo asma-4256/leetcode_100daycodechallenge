@@ -1,0 +1,30 @@
+796.Rotate String.
+
+Time complexity:O(n)
+Space complexity:O(n)
+
+Code(c++):
+class Solution {
+public:
+    bool rotateString(string s, string goal) {
+        //if lengths are not same in both strings : false
+        if(s.length()!=goal.length())return false;
+        //Concatnating the string s with s
+        string doubledString=s+s;
+        //find if the goal is present in the concatinated one & that length sholud be less than the length of the concatinatedString....
+        return doubledString.find(goal)<doubledString.length();     
+    }
+};
+Example 1:
+
+Input: s = "abcde", goal = "cdeab"
+Output: true
+Example 2:
+
+Input: s = "abcde", goal = "abced"
+Output: false
+
+Approach : Concatinating the string
+    After concatinating finding goal in the doublestrng if that is less than the length of the doublestring then return true...
+
+ALGORITHM : KMP ( Knuth-Morris-Pratt (KMP) algorithm) is also used to rotate strng in optmize way... with same time&space complexity of O(n)...... 
