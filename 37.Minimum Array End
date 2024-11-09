@@ -1,0 +1,40 @@
+3133.Minimum Array End
+       Time complexity:O(log n)
+       Space complexity:O(n)
+
+code(c++):
+class Solution {
+public:
+    long long minEnd(int n, int x) {
+        long long result=x,mask;
+        --n;
+        for(mask=1;n>0;mask<<=1){
+            if((mask&x)==0){
+                result|=(n&1)*mask;
+                n>>=1;
+            }
+        }
+        return result;
+    }
+};
+
+Example :
+
+Input: n = 2, x = 7
+
+Output: 15
+
+Explanation:
+
+nums can be [7,15] and its last element is 15.
+
+Algorithm
+Initialize result to x and define a mask variable for bit manipulation.
+Decrement n by 1 to exclude x from the iteration.
+Iterate over each bit position with mask, starting from 1 and shifting left in each iteration:
+    If the corresponding bit in x is 0 ((mask & x) == 0):
+        Update result by setting the bit based on the least significant bit of n.
+        Right shift n by 1 to process the next bit.
+Continue this process until n becomes 0.
+
+Return result as the final computed value.
