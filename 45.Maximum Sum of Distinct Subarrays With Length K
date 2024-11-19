@@ -1,0 +1,33 @@
+2461. Maximum Sum of Distinct Subarrays With Length K
+              Approach:Sliding window
+                Time complexity:O(n)
+                Space complexity:O(n) // due to hash map
+
+code(c++)
+class Solution {
+public:
+    long long maximumSubarraySum(vector<int>& nums, int k) {
+        int l=0,r=0;
+        long long ans=0,currsum=0;
+        unordered_map<int,int>h;
+        while(r<nums.size()){
+            int curnum=nums[r];
+            int prev=(h.count(curnum))?h[curnum]:-1;
+            while(l<=prev||r-l+1>k){
+                currsum-=nums[l];
+                l++;
+            }
+            h[curnum]=r;
+            currsum+=nums[r];
+            if(r-l+1==k){
+                ans=max(ans,currsum);
+            }
+            r++;
+        }
+        return ans;
+        
+    }
+};
+
+Algorithm :first start with index 0 as left,right until the window is less than k adding current sum & later making max of ans & currentsum , & check count is 1 if distint else -1 of count
+     if count -1 then the loop continues.. 
