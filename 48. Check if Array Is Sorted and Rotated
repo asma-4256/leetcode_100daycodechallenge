@@ -1,0 +1,24 @@
+1752. Check if Array Is Sorted and Rotated
+
+
+                Time complexity: O(n)
+                Space complexity: O(1)
+
+code (c++):-
+
+class Solution {
+public:
+    bool check(vector<int>& nums) {
+        int n=nums.size();
+        int sort=0;
+        for(int i=0;i<n;i++){
+            if(nums[i]>nums[(i+1)%n]){
+                sort++;
+            }
+            if(sort>1){
+                return false;
+        }
+        }
+        return true;
+    }
+};
