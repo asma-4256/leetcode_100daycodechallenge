@@ -1,0 +1,34 @@
+118.Pascal's Triangle
+    Time Complexity:O(n^2)
+    Space Complexity:O(1)
+
+code:
+
+class Solution {
+public:
+    // Main function to generate Pascal's Triangle  ==O(n)
+    vector<vector<int>> generate(int n) {
+        vector<vector<int>> ans;
+
+        // Generate each row
+        for (int row = 0; row < n; row++) {
+            ans.push_back(pascalTriangle(row));
+        }
+
+        return ans;
+    }
+
+    // Helper function to generate a specific row   ==O(n)
+    vector<int> pascalTriangle(int row) {
+        vector<int> ansRow;
+        long long val = 1;
+        ansRow.push_back(1); // C(row, 0) = 1
+
+        for (int col = 1; col <= row; col++) {
+            val = val * (row - col + 1) / col;
+            ansRow.push_back((int)val);
+        }
+
+        return ansRow;
+    }
+};
